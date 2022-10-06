@@ -1,0 +1,60 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Book {
+  id: Int!
+  title: String!
+  price: String!
+}
+
+type Royaltie {
+  bps: Int!
+  recipient: String!
+}
+
+type Metadata {
+  imageUrl: String
+  discordUrl: String
+  description: String
+  externalUrl: String
+  bannerImageUrl: String
+  twitterUsername: String
+}
+
+type Collection {
+  id: String!
+  name: String!
+  slug: String!
+  metadata: Metadata!
+  tokenCount: Int!
+  royalties: Royaltie!
+}
+
+type Query {
+  sayHello: String!
+  books: [Book!]!
+  bookById(bookId: Int!): [Book!]!
+  deleteBook(bookId: Int!): String!
+  collections: [Collection!]!
+  CollectionById(
+    """CollectionId Example: 0x8d04a8c79ceb0889bdd12acdf3fa9d207ed3ff63 """
+    collectionId: String!
+  ): Collection!
+}
+
+type Mutation {
+  AddBook(AddBookArgs: AddBookArgs!): String!
+  UpdateBook(UpdateBookArgs: UpdateBookArgs!): String!
+}
+
+input AddBookArgs {
+  title: String!
+  price: String!
+}
+
+input UpdateBookArgs {
+  id: Int!
+  title: String!
+  price: String!
+}
